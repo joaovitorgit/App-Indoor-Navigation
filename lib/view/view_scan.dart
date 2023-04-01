@@ -224,58 +224,56 @@ class _TabScanningState extends State<TabScanning> {
         _beacons.addAll(list);
       }
       // Verifica se foram feitas 6 leituras de sinais emitidos pelo beacon
-      if (_beacons.length >= 1) {
+      if (_beacons.length >= 4) {
 
-        for(int i=0;i<_beacons.length;i++){
-            var id = _beacons[i].macAddress.toString();
+        // for(int i=0;i<_beacons.length;i++){
+        //     var id = _beacons[i].macAddress.toString();
+        //
+        //     revisao = revisao + '';
+        //     if (id == "D7:05:E8:A5:81:6D"){
+        //        revisao = revisao + 'A';
+        //     } else if (id == "E4:D9:1C:68:10:5F"){
+        //       revisao = revisao + 'B';
+        //     } else if (id == "EA:99:49:8F:A4:B7"){
+        //       revisao = revisao + 'C';
+        //     } else if (id == "F8:13:A7:AC:D2:18"){
+        //       revisao = revisao + 'D';
+        //     } else if (id == "F6:66:FC:FD:B0:AF"){
+        //       revisao = revisao + 'E';
+        //     } else if (id == "EF:29:E0:C0:C7:FC"){
+        //       revisao = revisao + 'F';
+        //     } else if (id == "F2:55:56:32:1E:5A"){
+        //       revisao = revisao + 'G';
+        //     } else if (id == "F1:D4:36:55:33:C2"){
+        //       revisao = revisao + 'H';
+        //     } else if (id == "DD:59:6C:57:E9:0F"){
+        //       revisao = revisao + 'I';
+        //     } else if (id == "D2:9A:07:1A:74:44"){
+        //       revisao = revisao + 'J';
+        //     }
+        //     revisao = revisao + ';';
+        //     revisao = revisao + _beacons[i].accuracy.toString();
+        //     revisao = revisao + ';';
+        //     revisao = revisao + _beacons[i].txPower.toString();
+        //     revisao = revisao + ';';
+        //     revisao = revisao + _beacons[i].rssi.toString();
+        //     revisao = revisao + ';';
+        //     DateTime now = DateTime.now();
+        //     revisao = revisao + '${now.hour}:${now.minute}:${now.second}:${now.millisecond}';
+        //     revisao = revisao + ';';
+        //     revisao = revisao + DateTime.now().millisecondsSinceEpoch.toString();
+        //     revisao = revisao + ';\n';
+        // }
 
-            revisao = revisao + '';
-            if (id == "D7:05:E8:A5:81:6D"){
-               revisao = revisao + 'A';
-            } else if (id == "E4:D9:1C:68:10:5F"){
-              revisao = revisao + 'B';
-            } else if (id == "EA:99:49:8F:A4:B7"){
-              revisao = revisao + 'C';
-            } else if (id == "F8:13:A7:AC:D2:18"){
-              revisao = revisao + 'D';
-            } else if (id == "F6:66:FC:FD:B0:AF"){
-              revisao = revisao + 'E';
-            } else if (id == "EF:29:E0:C0:C7:FC"){
-              revisao = revisao + 'F';
-            } else if (id == "F2:55:56:32:1E:5A"){
-              revisao = revisao + 'G';
-            } else if (id == "F1:D4:36:55:33:C2"){
-              revisao = revisao + 'H';
-            } else if (id == "DD:59:6C:57:E9:0F"){
-              revisao = revisao + 'I';
-            } else if (id == "D2:9A:07:1A:74:44"){
-              revisao = revisao + 'J';
-            } 
-            revisao = revisao + ';';
-            revisao = revisao + _beacons[i].accuracy.toString();
-            revisao = revisao + ';';
-            revisao = revisao + _beacons[i].txPower.toString();
-            revisao = revisao + ';';
-            revisao = revisao + _beacons[i].rssi.toString();
-            revisao = revisao + ';';
-            DateTime now = DateTime.now();
-            revisao = revisao + '${now.hour}:${now.minute}:${now.second}:${now.millisecond}';
-            revisao = revisao + ';';
-            revisao = revisao + DateTime.now().millisecondsSinceEpoch.toString();
-            revisao = revisao + ';\n';
-        }
+        controllerDistancia.adiciona(_beacons);
 
-        // controllerDistancia.adiciona(_beacons);
-       
         // Esse aqui vai ter que retornar o ID e a distancia
-        // map1 = controllerDistancia.momento();
-        // teste.add(map1);
+        map1 = controllerDistancia.momento();
+        teste.add(map1);
 
-        // String id = map1.keys.first;
-        // num distanciaBeacon = map1.values.first;   
+        String id = map1.keys.first;
+        num distanciaBeacon = map1.values.first;
 
-        String id = _beacons[0].macAddress.toString();
-        num distanciaBeacon = _beacons[0].accuracy;
 
         // As orientações só serão dadas caso o usuário esteja próximo ao beacon(2 metros).
         if(distanciaBeacon <= 3){
@@ -286,27 +284,25 @@ class _TabScanningState extends State<TabScanning> {
             caminho[beaconAtual].setVisited();
             beaconAtual++;
          }else {  // Caso o beacon próximo não seja o correto.
-            try{
-              var index =  caminho.firstWhere((i) => i.getMac() == id); 
-            if (index.getVisited()){
-              if(index.getMac() == caminho[beaconAtual-1].getMac()){ 
-
-              }else{ 
-                flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
-                log("PRIMEIRO");
-              }
-            }
-            }
-            catch(e){
-              log("TERCEIRO");
-               flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
-                flutterTts.setSilence(600);
-
-            }
+            // try{
+            //   var index =  caminho.firstWhere((i) => i.getMac() == id);
+            // if (index.getVisited()){
+            //   if(index.getMac() == caminho[beaconAtual-1].getMac()){
+            //
+            //   }else{
+            //     flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
+            //     log("PRIMEIRO");
+            //   }
+            // }
+            // }
+            // catch(e){
+            //   log("TERCEIRO");
+            //    flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
+            //     flutterTts.setSilence(600);
+            //
+            // }
          }
-        }else{ 
         }
-       
         _beacons.clear(); 
       }
     });
