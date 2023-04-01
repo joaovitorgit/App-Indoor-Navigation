@@ -85,7 +85,8 @@ class _TabScanningState extends State<TabScanning> {
     no2.defineValores( // Por favor, continua subindo a rampa
         'nu1T2P',
         "Rampa de acesso ao segundo andar do IMC ",
-        'E4:D9:1C:68:10:5F',
+        // 'E4:D9:1C:68:10:5F',
+        'D2:9A:07:1A:74:44',
         "Por favor, continue subindo a rampa pela esquerda");
         // "Você chegou na metade da rampa. Por favor, continue subindo a rampa para chegar ao seu destino");
     no3.defineValores(// De quatro passos para a direita. Em seguida, vire a sua esquerda e siga pelo corredor
@@ -140,7 +141,8 @@ class _TabScanningState extends State<TabScanning> {
     no10.defineValores(
         'nuwU1M', 
         "Você está na secretaria", 
-        'D2:9A:07:1A:74:44',
+        // 'D2:9A:07:1A:74:44',
+        'E4:D9:1C:68:10:5F',
         "Parabéns, a secretaria é a primeira porta a sua direita.");
     // Para o teste do beacons referentes os nós 4, 9 e 10 serão reutilizados com as seguintes configurações
     // Equivalente ao Nó 8
@@ -233,7 +235,8 @@ class _TabScanningState extends State<TabScanning> {
             if (id == "D7:05:E8:A5:81:6D"){
                revisao = revisao + 'A';
             } else if (id == "E4:D9:1C:68:10:5F"){
-              revisao = revisao + 'B';
+              // revisao = revisao + 'B';
+              revisao = revisao + 'J';
             } else if (id == "EA:99:49:8F:A4:B7"){
               revisao = revisao + 'C';
             } else if (id == "F8:13:A7:AC:D2:18"){
@@ -250,6 +253,7 @@ class _TabScanningState extends State<TabScanning> {
               revisao = revisao + 'I';
             } else if (id == "D2:9A:07:1A:74:44"){
               revisao = revisao + 'J';
+              revisao = revisao + 'B';
             }
             revisao = revisao + ';';
             revisao = revisao + _beacons[i].accuracy.toString();
