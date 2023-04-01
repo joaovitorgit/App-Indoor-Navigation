@@ -1,0 +1,54 @@
+# ninja log v5
+8019	8176	0	CMakeFiles/install.util	fbddfd24daf91c8
+3	7008	0	flutter/_phony_	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_view.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/libflutter_linux_gtk.so	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h	18926de3be9e0088
+7008	7817	1679743897706632713	CMakeFiles/tfg.dir/flutter/generated_plugin_registrant.cc.o	2029e691382139d1
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_value.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/flutter_linux.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_engine.h	18926de3be9e0088
+7008	7865	1679743897754633616	CMakeFiles/tfg.dir/my_application.cc.o	aa9689b0d0da6025
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_call.h	18926de3be9e0088
+7865	8019	1679743897910636550	intermediates_do_not_run/tfg	cd5483491a473c36
+24261	28554	1679742721242006490	CMakeFiles/tfg.dir/main.cc.o	b159440fa4f148d3
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h	18926de3be9e0088
+3	7008	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_response.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/libflutter_linux_gtk.so	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_engine.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_call.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_method_response.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_value.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/fl_view.h	18926de3be9e0088
+4	7379	0	/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/linux/flutter/ephemeral/flutter_linux/flutter_linux.h	18926de3be9e0088
+4	7379	0	flutter/_phony_	18926de3be9e0088
+7379	8191	1679744653518852759	CMakeFiles/tfg.dir/flutter/generated_plugin_registrant.cc.o	2029e691382139d1
+7379	8240	1679744653570851670	CMakeFiles/tfg.dir/my_application.cc.o	aa9689b0d0da6025
+8241	8398	1679744653730848317	intermediates_do_not_run/tfg	cd5483491a473c36
+8399	8611	0	CMakeFiles/install.util	fbddfd24daf91c8

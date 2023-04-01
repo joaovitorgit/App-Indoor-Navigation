@@ -1,0 +1,4 @@
+#Sat Apr 01 09:26:01 BRT 2023
+base.0=/home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
