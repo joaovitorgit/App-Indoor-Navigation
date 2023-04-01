@@ -267,6 +267,7 @@ class _TabScanningState extends State<TabScanning> {
             revisao = revisao + ';';
             revisao = revisao + DateTime.now().millisecondsSinceEpoch.toString();
             revisao = revisao + ';\n';
+
         }
 
         controllerDistancia.adiciona(_beacons);
@@ -280,7 +281,9 @@ class _TabScanningState extends State<TabScanning> {
 
 
         // As orientações só serão dadas caso o usuário esteja próximo ao beacon(2 metros).
-        if(distanciaBeacon <= 3){
+        if(distanciaBeacon <= 3.5){
+          revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString();
+          revisao = revisao + "-----------------------------------------------------------";
           // Caso o beacon próximo ao usuário seja o correto 
           if (id == caminho[beaconAtual].getMac()) {
             caminho[beaconAtual].getLocalizacao();
