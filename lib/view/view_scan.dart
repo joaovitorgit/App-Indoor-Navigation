@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -222,7 +224,7 @@ class _TabScanningState extends State<TabScanning> {
         _beacons.addAll(list);
       }
       // Verifica se foram feitas 6 leituras de sinais emitidos pelo beacon
-      if (_beacons.length >= 3) {
+      if (_beacons.length >= 1) {
 
         for(int i=0;i<_beacons.length;i++){
             var id = _beacons[i].macAddress.toString();
@@ -263,51 +265,18 @@ class _TabScanningState extends State<TabScanning> {
             revisao = revisao + ';\n';
         }
 
-        // Verifica a posição inicial do usuário
-        // if(localizacaoAtual){
-        //   var index =  caminho.firstWhere((i) => i.getMac() == _beacons[0].macAddress); //
-        //   var posicaoCorreta = caminho.indexOf(index);
-        //   beaconAtual = posicaoCorreta;
-        //   localizacaoAtual = false;
-        // }
-        // Aplica uma média móvel sobre as distâncas emitidas pelo beacon nas 20 leituras
-        // log('TESTANDO ANTES');
-        controllerDistancia.adiciona(_beacons);
+        // controllerDistancia.adiciona(_beacons);
        
         // Esse aqui vai ter que retornar o ID e a distancia
-        map1 = controllerDistancia.momento();
-        teste.add(map1);
+        // map1 = controllerDistancia.momento();
+        // teste.add(map1);
 
-        String id = map1.keys.first;
-        num distanciaBeacon = map1.values.first;
+        // String id = map1.keys.first;
+        // num distanciaBeacon = map1.values.first;   
 
-        // if (id == "D7:05:E8:A5:81:6D"){
-        //   log("Beacon nupXZG");
-        //   flutterTts.speak("Beacon nupXZG");
-        // } else if (id == "E4:D9:1C:68:10:5F"){
-        //   log("Beacon nu1T2P");
-        //   flutterTts.speak("Beacon nu1T2P");
-        // } else if (id == "EA:99:49:8F:A4:B7"){
-        //   log("Beacon nu82HB");
-        //   flutterTts.speak("Beacon nu82HB");
-        // } else if (id == "F8:13:A7:AC:D2:18"){
-        //   flutterTts.speak("Beacon nuK46o");
-        //   log("Beacon nuK46o");
-        // } else if (id == "F6:66:FC:FD:B0:AF"){
-        //   flutterTts.speak("Beacon nuPWVm");
-        //   log("Beacon nuPWVm");
-        // } else if (id == "EF:29:E0:C0:C7:FC"){
-        //   flutterTts.speak("Beacon nuTorE");
-        // } else if (id == "F2:55:56:32:1E:5A"){
-        //   flutterTts.speak("Beacon nuYbJJ");
-        // } else if (id == "F1:D4:36:55:33:C2"){
-        //   flutterTts.speak("Beacon nuaScN");
-        // } else if (id == "DD:59:6C:57:E9:0F"){
-        //   flutterTts.speak("Beacon nuudyl");
-        // } else if (id == "D2:9A:07:1A:74:44"){
-        //   flutterTts.speak("Beacon nuwU1M");
-        // } 
-    
+        String id = _beacons[0].macAddress.toString();
+        num distanciaBeacon = _beacons[0].accuracy;
+
         // As orientações só serão dadas caso o usuário esteja próximo ao beacon(2 metros).
         if(distanciaBeacon <= 3){
           // Caso o beacon próximo ao usuário seja o correto 
@@ -319,22 +288,14 @@ class _TabScanningState extends State<TabScanning> {
          }else {  // Caso o beacon próximo não seja o correto.
             try{
               var index =  caminho.firstWhere((i) => i.getMac() == id); 
-            // Verifico se esse beacon próximo já foi visitado ou não
             if (index.getVisited()){
-              // Caso ele esteja passando próximo ao beacon uma segunda vez 
               if(index.getMac() == caminho[beaconAtual-1].getMac()){ 
-                // Caso ele apenas receba o sinal por ter ficado parado
-              
-                // index.getLocalizacao();
+
               }else{ 
                 flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
                 log("PRIMEIRO");
               }
             }
-            // else if(!index.getVisited()){ // Caso seja um beacon que ele não visitou e que não faz parte do caminho
-            //   flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
-            //   log("SEGUNDO");
-            // }
             }
             catch(e){
               log("TERCEIRO");
@@ -344,12 +305,8 @@ class _TabScanningState extends State<TabScanning> {
             }
          }
         }else{ 
-          // Caso ele esteja recebendo sinal de um beacon mas ainda esteja a uma distancia maior que 2 metros
-          // Poderia printar uma mensagem avisando que ele está próximo ao beacon.
-          //var index =  caminho.firstWhere((i) => i.getMac() == _beacons[0].macAddress); 
-          // flutterTts.speak("Você está próximo ao beacon." + index.getLocalizacao());
         }
-        // Limpo a lista de leitura de beacons para não atrapalhar medições seguintes.
+       
         _beacons.clear(); 
       }
     });
@@ -388,13 +345,6 @@ class _TabScanningState extends State<TabScanning> {
             ]
             
           )
-          // Text(
-          //   revisao,
-          //   // ignore: prefer_const_constructors
-          //   style: TextStyle(fontSize: 10, color: Colors.white),
-          // ),
-          
-      
         ],
       ),
     );
