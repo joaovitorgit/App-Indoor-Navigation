@@ -1,3 +1,4 @@
+import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -48,13 +49,6 @@ class _TabScanningState extends State<TabScanning> {
       }
     });
   }
-  
-   void retornaLista() {
-    setState(() {
-      revisao = revisao;
-    });
-    
-  }
 
   iniciaScanBeacon() async {
     
@@ -62,144 +56,109 @@ class _TabScanningState extends State<TabScanning> {
     await flutterTts.setLanguage('pt-BR'); 
     await flutterTts.setSpeechRate(0.6); 
     await flutterTts.setQueueMode(1);
-    final no1 = RequirementNode();
-    final no2 = RequirementNode();
-    final no3 = RequirementNode();
-    final no4 = RequirementNode();
-    final no5 = RequirementNode();
-    final no6 = RequirementNode();
-    final no7 = RequirementNode();
-    final no8 = RequirementNode();
-    final no9 = RequirementNode();
-    final no10 = RequirementNode();
-    final no11 = RequirementNode();
-    final no12 = RequirementNode();
-    final no13 = RequirementNode();
+    final node1 = RequirementNode();
+    final node2 = RequirementNode();
+    final node3 = RequirementNode();
+    final node4 = RequirementNode();
+    final node5 = RequirementNode();
+    final node6 = RequirementNode();
+    final node7 = RequirementNode();
+    final node8 = RequirementNode();
+    final node9 = RequirementNode();
+    final node10 = RequirementNode();
+    final node11 = RequirementNode();
+    final node12 = RequirementNode();
+    final node13 = RequirementNode();
 
-    no1.defineValores( // De onze passos para a esquerda e em seguida pegue a rampa a esquerda
+    node1.defineValores( 
         'nupXZG',
         'Porta de entrada do IMC',
         "D7:05:E8:A5:81:6D",
         "Após a porta de entrada, dê onze passos para a esquerda. Em seguida pegue a rampa a esquerda");
-        // "Após a porta de entrada siga à esquerda. Depois pegue a rampa à esquerda");
-    no2.defineValores( // Por favor, continua subindo a rampa
+       
+    node2.defineValores(
         'nu1T2P',
         "Rampa de acesso ao segundo andar do IMC ",
         // 'E4:D9:1C:68:10:5F',
         'D2:9A:07:1A:74:44',
         "Por favor, continue subindo a rampa pela esquerda");
-        // "Você chegou na metade da rampa. Por favor, continue subindo a rampa para chegar ao seu destino");
-    no3.defineValores(// De quatro passos para a direita. Em seguida, vire a sua esquerda e siga pelo corredor
+      
+    node3.defineValores(
         'nu82HB', 
         "Segundo andar do IMC", 
         "EA:99:49:8F:A4:B7",
         "Por favor, siga o corredor à esquerda");
-        // "Siga quatro passos à direita. Em seguida, pegue o corredo à esquerda");
-    // Nó C
-    no4.defineValores(// De seis passos para a direita e em seguida pegue o corredor a sua esquerda
+    
+    node4.defineValores(
         'nuK46o', 
         "Laboratório de pesquisa", 
         "F8:13:A7:AC:D2:18",
         "Há uma esquina à frente. Siga pela direita e dê seis passos. Em seguida pegue o corredor a sua esquerda");
-        // "Siga o corredor à direita, em seguida pegue o corredor à esquerda");
-    // Nó D
-    no5.defineValores(// percorra o corredor a sua esquerda
+     
+    node5.defineValores(
         'nuPWVm', 
         "Próximo a sala de t.i", 
         "F6:66:FC:FD:B0:AF",
         // "Siga pelo corredor a sua esquerda");
         "O corredor na sua esquerda é o mais longo do IMC. Por favor, siga por ele");
-    // Nó E
-    no6.defineValores(// siga por mais doze passos e em seguida pegue o corredor a direita
+
+    node6.defineValores(
         'nuTorE',
         "Corredor de estudos",
         'EF:29:E0:C0:C7:FC',
         "Continue pelo corredor. Quando chegar a uma esquina, pegue a direita");
-        // "Continue percorrendo o corredor. Em breve haverá uma esquina, por favor, siga à direita");
-    // Nó F
-    no7.defineValores(// de cinco passos para a direita depois pegue o corredor a esquerda e siga por mais onze passos
+      
+    node7.defineValores(
         'nuYbJJ', 
         "Proximo a sala de PMAT", 
         'F2:55:56:32:1E:5A',
         // "Siga pelo corredor à direita. Depois pegue o corredor a esquerda e siga por mais onze passos");
         "Siga para a direita na próxima esquina, depois de seis passos, siga pela esquerda. Oriente-se pela parede à direita e percorra o corredor até o final. Por favor, ignore o corredor que estará à sua direita");
-    // Nó G
-    no8.defineValores( // pegue o corredor a esquerda, siga por mais onze passos e depois siga o corredor a direita por mais doze passos
+
+    node8.defineValores( 
         'nuaScN', 
         "Proximo aos banheiros ", 
         'F1:D4:36:55:33:C2',
         // "Pegue o corredor à esquerda, siga por mais onze passos e depois continue no corredor à direita por mais doze passos");
         "Pegue o corredor a sua esquerda. Siga por  8 passos e pegue a direita. Por favor, oriente-se pela parede à direita e percorra o corredor até o final");
-    // Nó H
-    no9.defineValores(// siga o corredor a direita por trintra passos
+
+    node9.defineValores(
         'nuudyl', 
         "Corredor da secretaria", 
         'DD:59:6C:57:E9:0F',
         // "Siga pelo corredor à direita");
         "Vire a esquina à direita e siga em frente. Oriente-se pela parede a esquerda e ignore o primeiro corredor que encontrar.");
-    // Nó I
-    no10.defineValores(
+
+    node10.defineValores(
         'nuwU1M', 
         "Você está na secretaria", 
         // 'D2:9A:07:1A:74:44',
         'E4:D9:1C:68:10:5F',
         "Parabéns, a secretaria é a primeira porta a sua direita.");
-    // Para o teste do beacons referentes os nós 4, 9 e 10 serão reutilizados com as seguintes configurações
+   
     // Equivalente ao Nó 8
-    no11.defineValores(
+    node11.defineValores(
         'nuaScN', 
         "Você está próximo ao LDC1 e LDC2", 
         "F1:D4:36:55:33:C2",
         "Em breve vocÊ encontrará uma esquina. Siga pelo corredor à direita");
     // Equivalente ao Nó 9
-    no12.defineValores(
+    node12.defineValores(
         'nuudyl', 
         "Você está próximo aos corredor dos banheiros", 
         "DD:59:6C:57:E9:0F",
         "Pegue o corredor à esquerda e siga por ele.");
     // Equivalente ao Nó 10
-    no13.defineValores(
+    node13.defineValores(
         'nuwU1M', 
         "Você está em frente aos banheiros", 
         "D2:9A:07:1A:74:44",
         "Parabéns, os banheiros estão à sua direita");
 
-   int sum(int left, int right) => left + right;
+    String destino = 'banheiro';
+    // String destino = 'secretaria';
 
-   var grafo = WeightedDirectedGraph<RequirementNode, int>(
-    {
-      no1 : {no2 : 1},
-      no2:  {no1: 1, no3: 15},
-      no3 : {no2: 15, no4: 12, no11: 10}, // Bifurcação no topo da rampa
-      no4 : {no3: 12, no5: 11},
-      no5 : {no4: 11, no6: 17},
-      no6 : {no5: 17, no7: 11},
-      no7 : {no6: 11, no8: 11},
-      no8 : {no7: 11, no9: 9},
-      no9 : {no8: 9, no10: 22},
-      no10 : {no9: 22}, // Chegou na secretaria
-      // Estes nós fazem uso dos mesmo beacons utilizados vértices 8,9 e 10.
-      no11: {no3: 10, no12: 9},
-      no12: {no11: 9, no13: 6},
-      no13: {no12: 6},
-    },
-    summation: sum,
-    zero: 0,
-  );
-
-  final rotaSecretaria = grafo.shortestPath(no1, no10);
-  final rotaBanheiro = grafo.shortestPath(no1, no13);
-  
-    var destino = "";
-
-    destino = "opção 2";
-  
-    List caminho = []; 
-    if (destino == "opção 1") {
-      caminho = rotaSecretaria; 
-    } else if (destino == "opção 2") {
-      caminho = rotaBanheiro;
-    }
+    List path = getPath(node1,node2,node3,node4,node5,node6,node7,node8, node9, node10, node11, node12,node13, destino);
     
     await flutterBeacon.initializeScanning; 
     if (!controller.bluetoothEnabled) {
@@ -216,20 +175,107 @@ class _TabScanningState extends State<TabScanning> {
     }
    
   var beaconAtual = 0 ;
-  // bool localizacaoAtual = true;
-  // var primeiro =[];
+  List closestBeacon;
+  String id;
+  num distanciaBeacon;
+  var currentIndex = 0;
       
-    _resultadoScan = flutterBeacon.ranging(regions).listen((RangingResult result) {
+    _resultadoScan = flutterBeacon.ranging(regions).listen((RangingResult result) async {
       _beaconPorRegiao[result.region] = result.beacons; 
       
       for (var list in _beaconPorRegiao.values) {
         _beacons.addAll(list);
       }
-      // Verifica se foram feitas 6 leituras de sinais emitidos pelo beacon
+      writeLog(_beacons);
       if (_beacons.length >= 4) {
+        
 
-        for(int i=0;i<_beacons.length;i++){
-            var id = _beacons[i].macAddress.toString();
+        // controllerDistancia.adiciona(_beacons);
+        // closestBeacon = controllerDistancia.getClosest();
+        final receivePort = ReceivePort();
+        final isolate = Isolate.spawn(controllerDistancia.adiciona, [receivePort.sendPort,_beacons]);
+        receivePort.listen((message) {
+          closestBeacon = message;
+        });
+
+        log("O MAIS PERTO É ESSE: "+closestBeacon.toString());
+        id = closestBeacon[0];
+        distanciaBeacon = closestBeacon[1];
+
+        if(distanciaBeacon <= 3.5){
+          revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString()+"\n";
+          revisao = revisao + "-----------------------------------------------------------\n";
+          if(id == path[currentIndex].getMac()){
+            path[currentIndex].getLocalizacao();
+            path[currentIndex].getComandos();
+            path[currentIndex].setVisited();
+            currentIndex++;
+          }else{
+            var checkElement = path.indexWhere((element) => element.mac == id);
+
+            if(checkElement == -1){
+              flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
+              await Future.delayed(const Duration(seconds: 5));
+            }else if(checkElement > currentIndex){
+              currentIndex = checkElement;
+              path[currentIndex].getLocalizacao();
+              path[currentIndex].getComandos();
+              path[currentIndex].setVisited();
+              currentIndex++;
+            }
+            // If it belong to the path but we alread passed through dont to anything
+          }
+        }
+        _beacons.clear(); 
+      }
+    });
+  }
+
+
+  List getPath(node1,node2,node3,node4,node5,node6,node7,node8, node9, node10, node11, node12,node13, destino){
+      int sum(int left, int right) => left + right;
+
+      var grafo = WeightedDirectedGraph<RequirementNode, int>(
+        {
+          node1 : {node2 : 1},
+          node2:  {node1: 1, node3: 15},
+          node3 : {node2: 15, node4: 12, node11: 10}, // Bifurcação no topo da rampa
+          node4 : {node3: 12, node5: 11},
+          node5 : {node4: 11, node6: 17},
+          node6 : {node5: 17, node7: 11},
+          node7 : {node6: 11, node8: 11},
+          node8 : {node7: 11, node9: 9},
+          node9 : {node8: 9, node10: 22},
+          node10 : {node9: 22}, // Chegou na secretaria
+          // Estes nós fazem uso dos mesmo beacons utilizados vértices 8,9 e 10.
+          node11: {node3: 10, node12: 9},
+          node12: {node11: 9, node13: 6},
+          node13: {node12: 6},
+        },
+        summation: sum,
+        zero: 0,
+      );
+
+      final rotaSecretaria = grafo.shortestPath(node1, node10);
+      final rotaBanheiro = grafo.shortestPath(node1, node13);
+      List path = [];
+      switch (destino){
+        case 'banheiro':
+          path = rotaBanheiro;
+          break;
+        case 'secretaria':
+          path = rotaSecretaria;
+          break;
+        default:
+          break;
+      }
+
+      return path;
+    }
+
+  void writeLog(List<Beacon> beacons)async{
+    for(int i=0;i<beacons.length;i++){
+            var id = beacons[i].macAddress.toString();
 
             revisao = revisao + '';
             if (id == "D7:05:E8:A5:81:6D"){
@@ -256,11 +302,11 @@ class _TabScanningState extends State<TabScanning> {
               revisao = revisao + 'B';
             }
             revisao = revisao + ';';
-            revisao = revisao + _beacons[i].accuracy.toString();
+            revisao = revisao + beacons[i].accuracy.toString();
             revisao = revisao + ';';
-            revisao = revisao + _beacons[i].txPower.toString();
+            revisao = revisao + beacons[i].txPower.toString();
             revisao = revisao + ';';
-            revisao = revisao + _beacons[i].rssi.toString();
+            revisao = revisao + beacons[i].rssi.toString();
             revisao = revisao + ';';
             DateTime now = DateTime.now();
             revisao = revisao + '${now.hour}:${now.minute}:${now.second}:${now.millisecond}';
@@ -269,51 +315,8 @@ class _TabScanningState extends State<TabScanning> {
             revisao = revisao + ';\n';
 
         }
-
-        controllerDistancia.adiciona(_beacons);
-
-        // Esse aqui vai ter que retornar o ID e a distancia
-        map1 = controllerDistancia.momento();
-        teste.add(map1);
-
-        String id = map1.keys.first;
-        num distanciaBeacon = map1.values.first;
-
-
-        // As orientações só serão dadas caso o usuário esteja próximo ao beacon(2 metros).
-        if(distanciaBeacon <= 3.5){
-          revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString();
-          revisao = revisao + "-----------------------------------------------------------";
-          // Caso o beacon próximo ao usuário seja o correto 
-          if (id == caminho[beaconAtual].getMac()) {
-            caminho[beaconAtual].getLocalizacao();
-            caminho[beaconAtual].getComandos();
-            caminho[beaconAtual].setVisited();
-            beaconAtual++;
-         }else {  // Caso o beacon próximo não seja o correto.
-            // try{
-            //   var index =  caminho.firstWhere((i) => i.getMac() == id);
-            // if (index.getVisited()){
-            //   if(index.getMac() == caminho[beaconAtual-1].getMac()){
-            //
-            //   }else{
-            //     flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
-            //     log("PRIMEIRO");
-            //   }
-            // }
-            // }
-            // catch(e){
-            //   log("TERCEIRO");
-            //    flutterTts.speak("Trajeto incorreto. Por favor, retorne!");
-            //     flutterTts.setSilence(600);
-            //
-            // }
-         }
-        }
-        _beacons.clear(); 
-      }
-    });
   }
+
 
   pausaScanBeacon() async {
     _resultadoScan?.pause(); 
