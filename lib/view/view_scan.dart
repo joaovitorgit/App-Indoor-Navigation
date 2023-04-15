@@ -193,7 +193,7 @@ class _TabScanningState extends State<TabScanning> {
         // controllerDistancia.adiciona(_beacons);
         // closestBeacon = controllerDistancia.getClosest();
         final receivePort = ReceivePort();
-        final isolate = Isolate.spawn(controllerDistancia.adiciona, [receivePort.sendPort,_beacons]);
+        final isolate = await Isolate.spawn(controllerDistancia.adiciona, [receivePort.sendPort,_beacons]);
         receivePort.listen((message) {
           closestBeacon = message;
         });
