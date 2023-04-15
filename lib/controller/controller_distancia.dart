@@ -2,6 +2,8 @@
 
 
 
+import 'dart:isolate';
+
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:get/get.dart';
 import 'dart:math';
@@ -33,35 +35,173 @@ class RequirementDistance extends GetxController {
   List<Beacon> nono = [];
   List<Beacon> decimo = [];
 
+
+  List<Beacon> node1 = [];
+  List<Beacon> node2 = [];
+  List<Beacon> node3 = [];
+  List<Beacon> node4 = [];
+  List<Beacon> node5 = [];
+  List<Beacon> node6 = [];
+  List<Beacon> node7 = [];
+  List<Beacon> node8 = [];
+  List<Beacon> node9 = [];
+  List<Beacon> node10 = [];
+  List<Beacon> node11 = [];
+  List<Beacon> node12 = [];
+  List<Beacon> node13 = [];
+
   // Metodo para popular as listas individuais de beacons
-  void adiciona(List<Beacon> beacons) {
+  List adiciona(List parametros) {
+    SendPort sendPort = parametros[0];
+    List<Beacon> beacons = parametros[1];
     for(var i = 0; i< beacons.length;i++){
 
       if(beacons[i].macAddress == "D7:05:E8:A5:81:6D"){
-        primeiro.add(beacons[i]);
+        if(node1.length < 4) {
+          node1.add(beacons[i]);
+        } else { 
+          node1.removeAt(0);
+          node1.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "E4:D9:1C:68:10:5F"){
-        segundo.add(beacons[i]);
+        if(node2.length < 4) {
+          node2.add(beacons[i]);
+        } else { 
+          node2.removeAt(0);
+          node2.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "EA:99:49:8F:A4:B7"){
-        terceiro.add(beacons[i]);
+        if(node3.length < 4) {
+          node3.add(beacons[i]);
+        } else { 
+          node3.removeAt(0);
+          node3.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "F8:13:A7:AC:D2:18"){
-        quarto.add(beacons[i]);
+         if(node4.length < 4) {
+          node4.add(beacons[i]);
+        } else { 
+          node4.removeAt(0);
+          node4.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "F6:66:FC:FD:B0:AF"){
-        quinto.add(beacons[i]);
+         if(node5.length < 4) {
+          node5.add(beacons[i]);
+        } else { 
+          node5.removeAt(0);
+          node5.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "EF:29:E0:C0:C7:FC"){
-        sexto.add(beacons[i]);
+        if(node6.length < 4) {
+          node6.add(beacons[i]);
+        } else { 
+          node6.removeAt(0);
+          node6.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "F2:55:56:32:1E:5A"){
-        setimo.add(beacons[i]);
+         if(node7.length < 4) {
+          node7.add(beacons[i]);
+        } else { 
+          node7.removeAt(0);
+          node7.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "F1:D4:36:55:33:C2"){
-        oitavo.add(beacons[i]);
+         if(node8.length < 4) {
+          node8.add(beacons[i]);
+        } else { 
+          node8.removeAt(0);
+          node8.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "DD:59:6C:57:E9:0F"){
-        nono.add(beacons[i]);
+         if(node9.length < 4) {
+          node9.add(beacons[i]);
+        } else { 
+          node9.removeAt(0);
+          node9.add(beacons[i]);
+        }
       } else if(beacons[i].macAddress == "D2:9A:07:1A:74:44"){
-        decimo.add(beacons[i]);
+         if(node10.length < 4) {
+          node10.add(beacons[i]);
+        } else { 
+          node10.removeAt(0);
+          node10.add(beacons[i]);
+        }
       }
        else {
-        dev.log("Não esta adicionando nada");
+        print("Não esta adicionando nada");
       }
     }
+
+    List closest = getClosest();
+    sendPort.send(closest) ;
+  }
+  
+
+  List getClosest(){
+    num d1 = calculateAverage(node1);
+    num d2 = calculateAverage(node2);
+    num d3 = calculateAverage(node3);
+    num d4 = calculateAverage(node4);
+    num d5 = calculateAverage(node5);
+    num d6 = calculateAverage(node6);
+    num d7 = calculateAverage(node7);
+    num d8 = calculateAverage(node8);
+    num d9 = calculateAverage(node9);
+    num d10 = calculateAverage(node10);
+
+    var momentum = [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10];
+    var dist = momentum.reduce((value, element) => value < element ? value : element);
+    var smallestIndex = momentum.indexOf(dist);
+    List closest;
+    switch (smallestIndex){
+      case 0:
+        closest = ["D7:05:E8:A5:81:6D", dist] ;
+        break;
+      case 1:
+        closest = ["E4:D9:1C:68:10:5F", dist];
+        break;
+      case 2:
+        closest = ["EA:99:49:8F:A4:B7", dist];
+        break;
+      case 3:
+        closest = [ "F8:13:A7:AC:D2:18", dist];
+
+        break;
+      case 4:
+        closest = [ "F6:66:FC:FD:B0:AF", dist];
+        break;
+      case 5:
+        closest = [ "EF:29:E0:C0:C7:FC", dist];
+        break;
+      case 6:
+        closest = ["F2:55:56:32:1E:5A" , dist];
+        break;
+      case 7:
+        closest = [ "F1:D4:36:55:33:C2", dist];
+        break;
+      case 8:
+        closest = [ "DD:59:6C:57:E9:0F", dist];
+        break;
+      case 9:
+        closest = [ "D2:9A:07:1A:74:44", dist];
+        break;
+      default:
+         closest = ["nenhum" , 100];
+        break;
+    }
+    return closest;
+  }
+
+  num calculateAverage(List<Beacon> values){
+    if (values.isEmpty) {
+      return 100.0;
+    }
+    num sum = 0;
+    for(var element in values){
+      sum += element.accuracy;
+    }
+
+    return sum / values.length;
 
   }
 
@@ -162,51 +302,4 @@ class RequirementDistance extends GetxController {
     }
   }
 
-  // Referencia: https://www.flybuy.com/2018-11-19-fundamentals-of-beacon-ranging#:~:text=Mobile%20devices%20can%20estimate%20the,beacon's%20signal%20level%20as%20RSSI.
-  // Retorna a distancia em metros com uso do RSSI e txPower
-  double calculaDistancia(int rssi, int txPower) {
-    if (rssi == 0) {
-      // Retorna -1 caso a distancia nao possa ser calculada
-      return -1.0;
-    }
-    double ratio = rssi * 1.0 / txPower;
-    if (ratio < 1.0) {
-      double distancia = (1.00) * pow(ratio, 10.00);
-      return distancia;
-    } else {
-      double distancia = (0.89976) * pow(ratio, 7.7095) + 0.111;
-      return distancia;
-    }
-  }
-
-  // Retorna um valor após aplicar uma média móvel sobre um conjunto de 20 valores de accuracy
-  double movingAverage(List<Beacon> distancia) {
-    List resultado = [];
-    double temp = 0;
-    for (var i = 0; i < 17; i = i + 4) {
-      temp += distancia[i].accuracy;
-      temp += distancia[i + 1].accuracy;
-      temp += distancia[i + 2].accuracy;
-      temp += distancia[i + 3].accuracy;
-      temp = temp / 4;
-      resultado.add(temp);
-      temp = 0;
-    }
-    double soma = 0;
-    for (var i = 0; i < 5; i++) {
-      soma += resultado[i];
-    }
-    return soma / 5;
-  }
-
-  // Retorna a media dos valores de accuracy lidos
-  double mediaDistancia(List<Beacon> listaBeacons) {
-    double media = 0;
-    for (var i = 0; i < listaBeacons.length; i++) {
-      media = media + listaBeacons[i].accuracy;
-      dev.log("Valor sendo somado: " + listaBeacons[i].accuracy.toString());
-    }
-    media = media / listaBeacons.length;
-    return media;
-  }
 }
