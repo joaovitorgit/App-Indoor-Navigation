@@ -243,8 +243,24 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       try {
         await flutterBeacon.openBluetoothSettings;
       } on PlatformException catch (e) {
-        log(e.toString());
+        print(e);
       }
+    } else if (Platform.isIOS) {
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Bluetooth is Off'),
+            content: Text('Please enable Bluetooth on Settings > Bluetooth.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 }
