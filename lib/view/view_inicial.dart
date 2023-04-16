@@ -31,7 +31,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   esperaEstadoBluetooth() async {
-    _streamBluetooth = flutterBeacon.bluetoothStateChanged().listen((BluetoothState state) async {
+    _streamBluetooth = flutterBeacon
+        .bluetoothStateChanged()
+        .listen((BluetoothState state) async {
       controller.atualizaEstadoBluetooth(state);
       await verificaParametroApp();
     });
@@ -56,18 +58,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     //     controller.iniciaEscaneamento();
     //   }
     // } else {
-    //   controller.pausaEscaneamento(); 
+    //   controller.pausaEscaneamento();
     // }
 
     if (controller.bluetoothEnabled &&
         controller.authorizationStatusOk &&
-        controller.locationServiceEnabled){
-          if(currentIndex == 0){
-            controller.iniciaEscaneamento();
-          }else{
-            controller.pausaEscaneamento();
-          }
-        }
+        controller.locationServiceEnabled) {
+      if (currentIndex == 0) {
+        controller.iniciaEscaneamento();
+      } else {
+        controller.pausaEscaneamento();
+      }
+    }
   }
 
   @override
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       }
       await verificaParametroApp();
     } else if (state == AppLifecycleState.paused) {
-      _streamBluetooth?.pause(); 
+      _streamBluetooth?.pause();
     }
   }
 
@@ -94,10 +96,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Projeto'), 
+        title: const Text('Projeto'),
         centerTitle: false,
         actions: <Widget>[
-          Obx((){
+          Obx(() {
             if (!controller.locationServiceEnabled)
               return IconButton(
                 tooltip: 'Not Determined',
@@ -125,7 +127,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               },
             );
           }),
-          Obx((){
+          Obx(() {
             return IconButton(
               tooltip: controller.locationServiceEnabled
                   ? 'Location Service ON'
@@ -143,17 +145,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             );
           }),
           Obx(() {
-            final state = controller
-                .bluetoothState.value; 
+            final state = controller.bluetoothState.value;
 
             if (state == BluetoothState.stateOn) {
               return IconButton(
-                tooltip:
-                    'Bluetooth ligado',
+                tooltip: 'Bluetooth ligado',
                 icon: const Icon(Icons.bluetooth_connected),
                 onPressed: () {},
-                color:
-                    Colors.lightBlueAccent, 
+                color: Colors.lightBlueAccent,
               );
             }
 
@@ -161,16 +160,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               return IconButton(
                 tooltip: 'Bluetooth desligado',
                 icon: const Icon(Icons.bluetooth),
-                onPressed:
-                    handleOpenBluetooth, 
+                onPressed: handleOpenBluetooth,
                 color: Colors.red,
               );
             }
 
             return IconButton(
-              icon: const Icon(Icons
-                  .bluetooth_disabled), 
-              tooltip: 'Bluetooth não disponível', 
+              icon: const Icon(Icons.bluetooth_disabled),
+              tooltip: 'Bluetooth não disponível',
               onPressed: () {},
               color: Colors.grey,
             );
@@ -178,7 +175,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         ],
       ),
       body: IndexedStack(
-      
         index: currentIndex,
         children: const [
           TabScanning(),
@@ -191,7 +187,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             currentIndex = index;
           });
           if (currentIndex == 0) {
-           
             controller.iniciaEscaneamento();
           } else {
             controller.pausaEscaneamento();
@@ -210,9 +205,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       ),
     );
   }
-
-
-
 
   handleOpenLocationSettings() async {
     if (Platform.isAndroid) {
@@ -239,7 +231,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   handleOpenBluetooth() async {
-    
     if (Platform.isAndroid) {
       try {
         await flutterBeacon.openBluetoothSettings;

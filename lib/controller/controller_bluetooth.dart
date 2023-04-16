@@ -17,7 +17,9 @@ class RequirementStateController extends GetxController {
   bool get locationServiceEnabled => locationService.value;
   //------------------------------------------------------------------
 
-  bool get bluetoothEnabled => bluetoothState.value == BluetoothState.stateOn;  // Retorna se o bluetooth está ligado
+  bool get bluetoothEnabled =>
+      bluetoothState.value ==
+      BluetoothState.stateOn; // Retorna se o bluetooth está ligado
 
   atualizaEstadoBluetooth(BluetoothState state) {
     bluetoothState.value = state;
@@ -35,11 +37,13 @@ class RequirementStateController extends GetxController {
     _pauseScanning.value = true;
   }
 
-  Stream<bool> get iniciaStream { // Retorna o stream de iniciar o escaneamento
+  Stream<bool> get iniciaStream {
+    // Retorna o stream de iniciar o escaneamento
     return _startScanning.stream;
   }
- 
-  Stream<bool> get pausaStream { // Retorna o stream de pausar o escaneamento
+
+  Stream<bool> get pausaStream {
+    // Retorna o stream de pausar o escaneamento
     return _pauseScanning.stream;
   }
 
