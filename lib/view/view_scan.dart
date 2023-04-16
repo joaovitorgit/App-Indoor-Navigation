@@ -96,7 +96,7 @@ class _TabScanningState extends State<TabScanning> {
         "Por favor, continue subindo a rampa pela esquerda");
 
     node3.defineValores('nu82HB', "Segundo andar do IMC", "EA:99:49:8F:A4:B7",
-        "Por favor, siga o corredor à esquerda");
+        "Siga 5 passos à direita. Em seguida pegue o corredor à esquerda");
 
     node4.defineValores(
         'nuK46o',
@@ -145,7 +145,7 @@ class _TabScanningState extends State<TabScanning> {
     // Equivalente ao Nó 8
     node11.defineValores(
         'nuaScN',
-        "Você está próximo ao LDC1 e LDC2",
+        "Você está entre o LDC1 e o LDC2",
         "F1:D4:36:55:33:C2",
         "Em breve vocÊ encontrará uma esquina. Siga pelo corredor à direita");
     // Equivalente ao Nó 9
@@ -158,8 +158,8 @@ class _TabScanningState extends State<TabScanning> {
     node13.defineValores('nuwU1M', "Você está em frente aos banheiros",
         "D2:9A:07:1A:74:44", "Parabéns, os banheiros estão à sua direita");
 
-    String destino = 'banheiro';
-    // String destino = 'secretaria';
+    // String destino = 'banheiro';
+    String destino = 'secretaria';
 
     List path = getPath(node1, node2, node3, node4, node5, node6, node7, node8,
         node9, node10, node11, node12, node13, destino);
@@ -218,7 +218,7 @@ class _TabScanningState extends State<TabScanning> {
         id = closestBeacon[0];
         distanciaBeacon = closestBeacon[1];
 
-        if (distanciaBeacon <= 2) {
+        if (distanciaBeacon <= 3.5) {
           // revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString()+"\n";
           // revisao = revisao + "-----------------------------------------------------------\n";
           if (id == path[currentIndex].getMac()) {
