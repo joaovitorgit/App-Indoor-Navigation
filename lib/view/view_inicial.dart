@@ -42,13 +42,32 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     controller.atualizaEstadoBluetooth(bluetoothState);
     _streamBluetooth.printInfo();
 
-    if (controller.bluetoothEnabled) {
-      if (currentIndex == 0) {
-        controller.iniciaEscaneamento();
-      }
-    } else {
-      controller.pausaEscaneamento(); 
-    }
+    //----------------------------------------------------------------------------------------
+    final authorizationStatus = await flutterBeacon.authorizationStatus;
+    controller.updateAuthorizationStatus(authorizationStatus);
+
+    final locationServiceEnabled =
+        await flutterBeacon.checkLocationServicesIfEnabled;
+    controller.updateLocationService(locationServiceEnabled);
+    //----------------------------------------------------------------------------------------
+
+    // if (controller.bluetoothEnabled) {
+    //   if (currentIndex == 0) {
+    //     controller.iniciaEscaneamento();
+    //   }
+    // } else {
+    //   controller.pausaEscaneamento(); 
+    // }
+
+    if (controller.bluetoothEnabled &&
+        controller.authorizationStatusOk &&
+        controller.locationServiceEnabled){
+          if(currentIndex == 0){
+            controller.iniciaEscaneamento();
+          }else{
+            controller.pausaEscaneamento();
+          }
+        }
   }
 
   @override
@@ -78,6 +97,51 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         title: const Text('Projeto'), 
         centerTitle: false,
         actions: <Widget>[
+          Obx((){
+            if (!controller.locationServiceEnabled)
+              return IconButton(
+                tooltip: 'Not Determined',
+                icon: Icon(Icons.portable_wifi_off),
+                color: Colors.grey,
+                onPressed: () {},
+              );
+
+            if (!controller.authorizationStatusOk)
+              return IconButton(
+                tooltip: 'Not Authorized',
+                icon: Icon(Icons.portable_wifi_off),
+                color: Colors.red,
+                onPressed: () async {
+                  await flutterBeacon.requestAuthorization;
+                },
+              );
+
+            return IconButton(
+              tooltip: 'Authorized',
+              icon: Icon(Icons.wifi_tethering),
+              color: Colors.blue,
+              onPressed: () async {
+                await flutterBeacon.requestAuthorization;
+              },
+            );
+          }),
+          Obx((){
+            return IconButton(
+              tooltip: controller.locationServiceEnabled
+                  ? 'Location Service ON'
+                  : 'Location Service OFF',
+              icon: Icon(
+                controller.locationServiceEnabled
+                    ? Icons.location_on
+                    : Icons.location_off,
+              ),
+              color:
+                  controller.locationServiceEnabled ? Colors.blue : Colors.red,
+              onPressed: controller.locationServiceEnabled
+                  ? () {}
+                  : handleOpenLocationSettings,
+            );
+          }),
           Obx(() {
             final state = controller
                 .bluetoothState.value; 
@@ -145,6 +209,33 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         ],
       ),
     );
+  }
+
+
+
+
+  handleOpenLocationSettings() async {
+    if (Platform.isAndroid) {
+      await flutterBeacon.openLocationSettings;
+    } else if (Platform.isIOS) {
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Location Services Off'),
+            content: Text(
+              'Please enable Location Services on Settings > Privacy > Location Services.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   handleOpenBluetooth() async {

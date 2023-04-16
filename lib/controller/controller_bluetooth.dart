@@ -7,6 +7,16 @@ class RequirementStateController extends GetxController {
   final _startScanning = false.obs; // Flag para iniciar o escaneamento
   final _pauseScanning = false.obs; // Flag para pausar o escaneamento
 
+  //------------------------------------------------------------------
+  var authorizationStatus = AuthorizationStatus.notDetermined.obs;
+  var locationService = false.obs;
+
+  bool get authorizationStatusOk =>
+      authorizationStatus.value == AuthorizationStatus.allowed ||
+      authorizationStatus.value == AuthorizationStatus.always;
+  bool get locationServiceEnabled => locationService.value;
+  //------------------------------------------------------------------
+
   bool get bluetoothEnabled => bluetoothState.value == BluetoothState.stateOn;  // Retorna se o bluetooth está ligado
 
   atualizaEstadoBluetooth(BluetoothState state) {
@@ -32,4 +42,14 @@ class RequirementStateController extends GetxController {
   Stream<bool> get pausaStream { // Retorna o stream de pausar o escaneamento
     return _pauseScanning.stream;
   }
+
+  //----------------------------------------------------------------------------
+  updateAuthorizationStatus(AuthorizationStatus status) {
+    authorizationStatus.value = status;
+  }
+
+  updateLocationService(bool flag) {
+    locationService.value = flag;
+  }
+  //--------------------------------------------------------------------------
 }

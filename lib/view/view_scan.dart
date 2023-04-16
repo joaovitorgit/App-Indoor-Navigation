@@ -161,7 +161,16 @@ class _TabScanningState extends State<TabScanning> {
     List path = getPath(node1,node2,node3,node4,node5,node6,node7,node8, node9, node10, node11, node12,node13, destino);
     
     await flutterBeacon.initializeScanning; 
-    if (!controller.bluetoothEnabled) {
+    // if (!controller.bluetoothEnabled) {
+    //   return;
+    // }
+    if (!controller.authorizationStatusOk ||
+        !controller.locationServiceEnabled ||
+        !controller.bluetoothEnabled) {
+      print(
+          'RETURNED, authorizationStatusOk=${controller.authorizationStatusOk}, '
+          'locationServiceEnabled=${controller.locationServiceEnabled}, '
+          'bluetoothEnabled=${controller.bluetoothEnabled}');
       return;
     }
     final regions = <Region>[]; 
