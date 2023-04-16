@@ -8,7 +8,7 @@ import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:get/get.dart';
 import 'package:myflutterapp/view/view_scan.dart';
 import 'dart:developer';
-
+import 'package:permission_handler/permission_handler.dart';
 import '../controller/controller_bluetooth.dart';
 
 class HomePage extends StatefulWidget {
@@ -239,6 +239,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   handleOpenBluetooth() async {
+    
     if (Platform.isAndroid) {
       try {
         await flutterBeacon.openBluetoothSettings;

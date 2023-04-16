@@ -1,9 +1,13 @@
 # This is a generated file; do not edit or check into version control.
-flutter_beacon=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_beacon-0.5.1\\
-flutter_tts=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_tts-3.6.3\\
-open_file=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\open_file-3.2.1\\
-path_provider=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.14\\
-path_provider_android=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_android-2.0.24\\
-path_provider_foundation=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_foundation-2.2.1\\
-path_provider_linux=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.1.10\\
-path_provider_windows=C:\\Users\\LEVTY\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.7\\
+flutter_beacon=/home/joao/.pub-cache/hosted/pub.dev/flutter_beacon-0.5.1/
+flutter_tts=/home/joao/.pub-cache/hosted/pub.dev/flutter_tts-3.6.3/
+open_file=/home/joao/.pub-cache/hosted/pub.dev/open_file-3.2.1/
+path_provider=/home/joao/.pub-cache/hosted/pub.dev/path_provider-2.0.14/
+path_provider_android=/home/joao/.pub-cache/hosted/pub.dev/path_provider_android-2.0.24/
+path_provider_foundation=/home/joao/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.1/
+path_provider_linux=/home/joao/.pub-cache/hosted/pub.dev/path_provider_linux-2.1.10/
+path_provider_windows=/home/joao/.pub-cache/hosted/pub.dev/path_provider_windows-2.0.7/
+permission_handler=/home/joao/.pub-cache/hosted/pub.dev/permission_handler-10.2.0/
+permission_handler_android=/home/joao/.pub-cache/hosted/pub.dev/permission_handler_android-10.2.0/
+permission_handler_apple=/home/joao/.pub-cache/hosted/pub.dev/permission_handler_apple-9.0.8/
+permission_handler_windows=/home/joao/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.2/
