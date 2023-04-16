@@ -14,15 +14,15 @@ com.example.tfg.app-jetified-window-1.0.0-beta04-12 /home/joao/.gradle/caches/tr
 com.example.tfg.app-appcompat-1.2.0-13 /home/joao/.gradle/caches/transforms-3/e937b68345cad7d61818d312b6b4c7ca/transformed/appcompat-1.2.0/res
 com.example.tfg.app-media-1.0.0-14 /home/joao/.gradle/caches/transforms-3/f057e7418cf3ed9a7aa575bdc69ad668/transformed/media-1.0.0/res
 com.example.tfg.app-coordinatorlayout-1.1.0-15 /home/joao/.gradle/caches/transforms-3/fe6b5add7ec73032a23eba92468f91f4/transformed/coordinatorlayout-1.1.0/res
-com.example.tfg.app-debug-16 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/android/app/src/debug/res
-com.example.tfg.app-main-17 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/android/app/src/main/res
-com.example.tfg.app-pngs-18 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/generated/res/pngs/debug
-com.example.tfg.app-resValues-19 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/generated/res/resValues/debug
-com.example.tfg.app-rs-20 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/generated/res/rs/debug
-com.example.tfg.app-mergeDebugResources-21 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
-com.example.tfg.app-mergeDebugResources-22 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-com.example.tfg.app-merged_res-23 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/app/intermediates/merged_res/debug
-com.example.tfg.app-packaged_res-24 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/flutter_beacon/intermediates/packaged_res/debug
-com.example.tfg.app-packaged_res-25 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/flutter_tts/intermediates/packaged_res/debug
-com.example.tfg.app-packaged_res-26 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/open_file/intermediates/packaged_res/debug
-com.example.tfg.app-packaged_res-27 /home/joao/Documentos/pelo amor de deus/f12241666_exportandoPDF/tfg/build/path_provider_android/intermediates/packaged_res/debug
+com.example.tfg.app-debug-16 /home/joao/Área de Trabalho/TFG-FINAL/android/app/src/debug/res
+com.example.tfg.app-main-17 /home/joao/Área de Trabalho/TFG-FINAL/android/app/src/main/res
+com.example.tfg.app-pngs-18 /home/joao/Área de Trabalho/TFG-FINAL/build/app/generated/res/pngs/debug
+com.example.tfg.app-resValues-19 /home/joao/Área de Trabalho/TFG-FINAL/build/app/generated/res/resValues/debug
+com.example.tfg.app-rs-20 /home/joao/Área de Trabalho/TFG-FINAL/build/app/generated/res/rs/debug
+com.example.tfg.app-mergeDebugResources-21 /home/joao/Área de Trabalho/TFG-FINAL/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.tfg.app-mergeDebugResources-22 /home/joao/Área de Trabalho/TFG-FINAL/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.tfg.app-merged_res-23 /home/joao/Área de Trabalho/TFG-FINAL/build/app/intermediates/merged_res/debug
+com.example.tfg.app-packaged_res-24 /home/joao/Área de Trabalho/TFG-FINAL/build/flutter_beacon/intermediates/packaged_res/debug
+com.example.tfg.app-packaged_res-25 /home/joao/Área de Trabalho/TFG-FINAL/build/flutter_tts/intermediates/packaged_res/debug
+com.example.tfg.app-packaged_res-26 /home/joao/Área de Trabalho/TFG-FINAL/build/open_file/intermediates/packaged_res/debug
+com.example.tfg.app-packaged_res-27 /home/joao/Área de Trabalho/TFG-FINAL/build/path_provider_android/intermediates/packaged_res/debug

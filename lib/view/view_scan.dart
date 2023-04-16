@@ -93,8 +93,8 @@ class _TabScanningState extends State<TabScanning> {
     node2.defineValores(
         'nu1T2P',
         "Rampa de acesso ao segundo andar do IMC ",
-        // 'E4:D9:1C:68:10:5F',
-        'D2:9A:07:1A:74:44',
+        'E4:D9:1C:68:10:5F',
+        // 'D2:9A:07:1A:74:44',
         "Por favor, continue subindo a rampa pela esquerda");
       
     node3.defineValores(
@@ -146,8 +146,8 @@ class _TabScanningState extends State<TabScanning> {
     node10.defineValores(
         'nuwU1M', 
         "Você está na secretaria", 
-        // 'D2:9A:07:1A:74:44',
-        'E4:D9:1C:68:10:5F',
+        'D2:9A:07:1A:74:44',
+        // 'E4:D9:1C:68:10:5F',
         "Parabéns, a secretaria é a primeira porta a sua direita.");
    
     // Equivalente ao Nó 8
@@ -174,6 +174,10 @@ class _TabScanningState extends State<TabScanning> {
 
     List path = getPath(node1,node2,node3,node4,node5,node6,node7,node8, node9, node10, node11, node12,node13, destino);
     
+
+    for(int i = 0;i<path.length;i++){
+      log(path[i].id);
+    }
     await flutterBeacon.initializeScanning; 
     // if (!controller.bluetoothEnabled) {
     //   return;
@@ -225,9 +229,9 @@ class _TabScanningState extends State<TabScanning> {
         id = closestBeacon[0];
         distanciaBeacon = closestBeacon[1];
 
-        if(distanciaBeacon <= 3.5){
-          revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString()+"\n";
-          revisao = revisao + "-----------------------------------------------------------\n";
+        if(distanciaBeacon <= 2){
+          // revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString()+"\n";
+          // revisao = revisao + "-----------------------------------------------------------\n";
           if(id == path[currentIndex].getMac()){
             path[currentIndex].getLocalizacao();
             path[currentIndex].getComandos();

@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="21"
-6-->/home/joao/.pub-cache/hosted/pub.dev/flutter_tts-3.5.3/android/src/main/AndroidManifest.xml
+6-->/home/joao/.pub-cache/hosted/pub.dev/flutter_tts-3.6.3/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="21" />
-7-->/home/joao/.pub-cache/hosted/pub.dev/flutter_tts-3.5.3/android/src/main/AndroidManifest.xml
+7-->/home/joao/.pub-cache/hosted/pub.dev/flutter_tts-3.6.3/android/src/main/AndroidManifest.xml
 8
 9</manifest>
