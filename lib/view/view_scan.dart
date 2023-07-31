@@ -54,14 +54,11 @@ class _TabScanningState extends State<TabScanning> {
   iniciaScanBeacon() async {
     var status = await Permission.bluetoothScan.status;
     if (status.isDenied) {
-      log("PRIMEIRO");
       status = await Permission.bluetoothScan.request();
     }
     if (status.isGranted) {
-      log("SEGUNDO");
       // Permission granted, start Bluetooth scan here
     } else {
-      log("TERCEIRO");
       // Permission denied, handle it here
     }
     final FlutterTts flutterTts = FlutterTts();
