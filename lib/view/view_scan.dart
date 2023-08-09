@@ -165,9 +165,7 @@ class _TabScanningState extends State<TabScanning> {
       log(path[i].id);
     }
     await flutterBeacon.initializeScanning;
-    // if (!controller.bluetoothEnabled) {
-    //   return;
-    // }
+
     if (!controller.authorizationStatusOk ||
         !controller.locationServiceEnabled ||
         !controller.bluetoothEnabled) {
@@ -202,8 +200,6 @@ class _TabScanningState extends State<TabScanning> {
       }
       writeLog(_beacons);
       if (_beacons.length >= 4) {
-        // controllerDistancia.adiciona(_beacons);
-        // closestBeacon = controllerDistancia.getClosest();
         final receivePort = ReceivePort();
         final isolate = await Isolate.spawn(
             controllerDistancia.adiciona, [receivePort.sendPort, _beacons]);
@@ -211,13 +207,10 @@ class _TabScanningState extends State<TabScanning> {
           closestBeacon = message;
         });
 
-        log("O MAIS PERTO É ESSE: " + closestBeacon.toString());
         id = closestBeacon[0];
         distanciaBeacon = closestBeacon[1];
 
         if (distanciaBeacon <= 3.5) {
-          // revisao = revisao +"Chamou o comando neste frame. O beacon foi "+id+"com distancia: "+distanciaBeacon.toString()+"\n";
-          // revisao = revisao + "-----------------------------------------------------------\n";
           if (id == path[currentIndex].getMac()) {
             path[currentIndex].getLocalizacao();
             path[currentIndex].getComandos();
@@ -256,14 +249,14 @@ class _TabScanningState extends State<TabScanning> {
           node2: 15,
           node4: 12,
           node11: 10
-        }, // Bifurcação no topo da rampa
+        },
         node4: {node3: 12, node5: 11},
         node5: {node4: 11, node6: 17},
         node6: {node5: 17, node7: 11},
         node7: {node6: 11, node8: 11},
         node8: {node7: 11, node9: 9},
         node9: {node8: 9, node10: 22},
-        node10: {node9: 22}, // Chegou na secretaria
+        node10: {node9: 22}, 
         // Estes nós fazem uso dos mesmo beacons utilizados vértices 8,9 e 10.
         node11: {node3: 10, node12: 9},
         node12: {node11: 9, node13: 6},
@@ -297,9 +290,8 @@ class _TabScanningState extends State<TabScanning> {
       revisao = revisao + '';
       if (id == "D7:05:E8:A5:81:6D") {
         revisao = revisao + 'A';
-      } else if (id == "E4:D9:1C:68:10:5F") {
-        // revisao = revisao + 'B';
-        revisao = revisao + 'J';
+      } else if (id == "D2:9A:07:1A:74:44") {
+        revisao = revisao + 'B';
       } else if (id == "EA:99:49:8F:A4:B7") {
         revisao = revisao + 'C';
       } else if (id == "F8:13:A7:AC:D2:18") {
@@ -314,10 +306,8 @@ class _TabScanningState extends State<TabScanning> {
         revisao = revisao + 'H';
       } else if (id == "DD:59:6C:57:E9:0F") {
         revisao = revisao + 'I';
-      } else if (id == "D2:9A:07:1A:74:44") {
+      } else if (id == "E4:D9:1C:68:10:5F") {
         revisao = revisao + 'J';
-        revisao = revisao + 'B';
-      }
       revisao = revisao + ';';
       revisao = revisao + beacons[i].accuracy.toString();
       revisao = revisao + ';';

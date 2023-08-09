@@ -44,23 +44,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     controller.atualizaEstadoBluetooth(bluetoothState);
     _streamBluetooth.printInfo();
 
-    //----------------------------------------------------------------------------------------
     final authorizationStatus = await flutterBeacon.authorizationStatus;
     controller.updateAuthorizationStatus(authorizationStatus);
 
     final locationServiceEnabled =
         await flutterBeacon.checkLocationServicesIfEnabled;
     controller.updateLocationService(locationServiceEnabled);
-    //----------------------------------------------------------------------------------------
-
-    // if (controller.bluetoothEnabled) {
-    //   if (currentIndex == 0) {
-    //     controller.iniciaEscaneamento();
-    //   }
-    // } else {
-    //   controller.pausaEscaneamento();
-    // }
-
+   
     if (controller.bluetoothEnabled &&
         controller.authorizationStatusOk &&
         controller.locationServiceEnabled) {
@@ -209,25 +199,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   handleOpenLocationSettings() async {
     if (Platform.isAndroid) {
       await flutterBeacon.openLocationSettings;
-    } else if (Platform.isIOS) {
-      await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Location Services Off'),
-            content: Text(
-              'Please enable Location Services on Settings > Privacy > Location Services.',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
-    }
+    } 
   }
 
   handleOpenBluetooth() async {
@@ -237,22 +209,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       } on PlatformException catch (e) {
         print(e);
       }
-    } else if (Platform.isIOS) {
-      await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Bluetooth is Off'),
-            content: Text('Please enable Bluetooth on Settings > Bluetooth.'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
     }
   }
 }

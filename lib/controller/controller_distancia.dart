@@ -6,19 +6,8 @@ import 'dart:math';
 import 'dart:developer' as dev;
 import 'package:flutter_tts/flutter_tts.dart';
 
-// Esta classe define métodos relacionados à distância entre o dispositivo do usuário e o Beacon
 class RequirementDistance extends GetxController {
   final FlutterTts flutterTts = FlutterTts();
-  // "D7:05:E8:A5:81:6D",
-  // 'E4:D9:1C:68:10:5F',
-  // "EA:99:49:8F:A4:B7",
-  // "F8:13:A7:AC:D2:18",
-  // "F6:66:FC:FD:B0:AF",
-  // 'EF:29:E0:C0:C7:FC',
-  //  F2:55:56:32:1E:5A',
-  // 'F1:D4:36:55:33:C2',
-  // 'DD:59:6C:57:E9:0F',
-  // 'D2:9A:07:1A:74:44',
   List<Beacon> primeiro = [];
   List<Beacon> segundo = [];
   List<Beacon> terceiro = [];
@@ -44,7 +33,6 @@ class RequirementDistance extends GetxController {
   List<Beacon> node12 = [];
   List<Beacon> node13 = [];
 
-  // Metodo para popular as listas individuais de beacons
   List adiciona(List parametros) {
     SendPort sendPort = parametros[0];
     List<Beacon> beacons = parametros[1];
@@ -260,13 +248,10 @@ class RequirementDistance extends GetxController {
     if (nono.isEmpty) d9 = 100;
     if (decimo.isEmpty) d10 = 100;
 
-    // Uma lista com a distâncias aé cada Beacon no momento
     var momentum = [d1, d2, d3, d4, d5, d6, d7, d8, d9, d10];
-    // Descubro a menor distância
     var dist =
         momentum.reduce((value, element) => value < element ? value : element);
 
-    // Limpeza das listas individuais antes do próximo momento
     primeiro.clear();
     segundo.clear();
     terceiro.clear();
