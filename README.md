@@ -21,5 +21,4 @@ Authors:
 - Rafael de Magalhaes Dias Frinhani
 - Luiz Olmes Carvalho 
 
-This is a registred software
-Process number: `BR512023003128-3`
+This is a registred software with process number BR512023003128-3 in National Institute of Industrial Property (Instituto Nacional da Propriedade Industrial, INPI) of Brazil, in 17/10/2023.
