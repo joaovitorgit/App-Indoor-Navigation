@@ -15,9 +15,9 @@ The plugins used in this project were:
 - directed_graph
 
 Authors: 
-Joao Vitor de Faria
-Rafael de Magalhaes Dias Frinhani
-Luiz Olmes Carvalho 
+- Joao Vitor de Faria
+- Rafael de Magalhaes Dias Frinhani
+- Luiz Olmes Carvalho 
 
 This is a registred software
 Process number: `BR512023003128-3`
