@@ -10,11 +10,11 @@ You can see how the application works in the figure below:
 
 
 The language, framework e plugins used in this project were:
-Dart v2.17.6
-Flutter v3.0.5
-directed graph v0.3.7
-flutter beacon v0.5.1
-flutter_tts v3.5.0
+- Dart v2.17.6
+- Flutter v3.0.5
+- directed graph v0.3.7
+- flutter beacon v0.5.1
+- flutter_tts v3.5.0
 
 Authors: 
 - Joao Vitor de Faria
