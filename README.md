@@ -6,8 +6,8 @@ The highlight of this project is the graph approach, which can be presented as a
 In this version, the beacons used are still fixed in the backend, but future versions may include an interface to add/remove these devices, making them even easier to use
 
 You can see how the application works in the figure below:
-![funcionamento](https://github.com/user-attachments/assets/1b700620-92d5-41d6-9c84-b8018a803210)
 
+![SEMISH-Beacons-Figuras](https://github.com/user-attachments/assets/86883311-7ed6-4c83-ab6d-90c2d891c4cc)
 
 The language, framework e plugins used in this project were:
 - Dart v2.17.6
