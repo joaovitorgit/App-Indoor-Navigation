@@ -33,87 +33,65 @@ class RequirementDistance extends GetxController {
   List<Beacon> node12 = [];
   List<Beacon> node13 = [];
 
+  static const Map<String, String> beaconMacToNode = {
+    'D7:05:E8:A5:81:6D': 'node1',
+    'E4:D9:1C:68:10:5F': 'node2',
+    'EA:99:49:8F:A4:B7': 'node3',
+    'F8:13:A7:AC:D2:18': 'node4',
+    'F6:66:FC:FD:B0:AF': 'node5',
+    'EF:29:E0:C0:C7:FC': 'node6',
+    'F2:55:56:32:1E:5A': 'node7',
+    'F1:D4:36:55:33:C2': 'node8',
+    'DD:59:6C:57:E9:0F': 'node9',
+    'D2:9A:07:1A:74:44': 'node10',
+  };
+
   List adiciona(List parametros) {
     SendPort sendPort = parametros[0];
     List<Beacon> beacons = parametros[1];
     for (var i = 0; i < beacons.length; i++) {
-      if (beacons[i].macAddress == "D7:05:E8:A5:81:6D") {
-        if (node1.length < 4) {
-          node1.add(beacons[i]);
+      final nodeKey = beaconMacToNode[beacons[i].macAddress];
+      if (nodeKey != null) {
+        final nodeList = _getNodeListByKey(nodeKey);
+        if (nodeList.length < 4) {
+          nodeList.add(beacons[i]);
         } else {
-          node1.removeAt(0);
-          node1.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "E4:D9:1C:68:10:5F") {
-        if (node2.length < 4) {
-          node2.add(beacons[i]);
-        } else {
-          node2.removeAt(0);
-          node2.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "EA:99:49:8F:A4:B7") {
-        if (node3.length < 4) {
-          node3.add(beacons[i]);
-        } else {
-          node3.removeAt(0);
-          node3.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "F8:13:A7:AC:D2:18") {
-        if (node4.length < 4) {
-          node4.add(beacons[i]);
-        } else {
-          node4.removeAt(0);
-          node4.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "F6:66:FC:FD:B0:AF") {
-        if (node5.length < 4) {
-          node5.add(beacons[i]);
-        } else {
-          node5.removeAt(0);
-          node5.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "EF:29:E0:C0:C7:FC") {
-        if (node6.length < 4) {
-          node6.add(beacons[i]);
-        } else {
-          node6.removeAt(0);
-          node6.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "F2:55:56:32:1E:5A") {
-        if (node7.length < 4) {
-          node7.add(beacons[i]);
-        } else {
-          node7.removeAt(0);
-          node7.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "F1:D4:36:55:33:C2") {
-        if (node8.length < 4) {
-          node8.add(beacons[i]);
-        } else {
-          node8.removeAt(0);
-          node8.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "DD:59:6C:57:E9:0F") {
-        if (node9.length < 4) {
-          node9.add(beacons[i]);
-        } else {
-          node9.removeAt(0);
-          node9.add(beacons[i]);
-        }
-      } else if (beacons[i].macAddress == "D2:9A:07:1A:74:44") {
-        if (node10.length < 4) {
-          node10.add(beacons[i]);
-        } else {
-          node10.removeAt(0);
-          node10.add(beacons[i]);
+          nodeList.removeAt(0);
+          nodeList.add(beacons[i]);
         }
       } else {
         print("Não esta adicionando nada");
       }
     }
-
     List closest = getClosest();
     sendPort.send(closest);
+  }
+
+  List<Beacon> _getNodeListByKey(String key) {
+    switch (key) {
+      case 'node1':
+        return node1;
+      case 'node2':
+        return node2;
+      case 'node3':
+        return node3;
+      case 'node4':
+        return node4;
+      case 'node5':
+        return node5;
+      case 'node6':
+        return node6;
+      case 'node7':
+        return node7;
+      case 'node8':
+        return node8;
+      case 'node9':
+        return node9;
+      case 'node10':
+        return node10;
+      default:
+        throw Exception('Unknown node key: $key');
+    }
   }
 
   List getClosest() {
@@ -133,41 +111,11 @@ class RequirementDistance extends GetxController {
         momentum.reduce((value, element) => value < element ? value : element);
     var smallestIndex = momentum.indexOf(dist);
     List closest;
-    switch (smallestIndex) {
-      case 0:
-        closest = ["D7:05:E8:A5:81:6D", dist];
-        break;
-      case 1:
-        closest = ["E4:D9:1C:68:10:5F", dist];
-        break;
-      case 2:
-        closest = ["EA:99:49:8F:A4:B7", dist];
-        break;
-      case 3:
-        closest = ["F8:13:A7:AC:D2:18", dist];
-
-        break;
-      case 4:
-        closest = ["F6:66:FC:FD:B0:AF", dist];
-        break;
-      case 5:
-        closest = ["EF:29:E0:C0:C7:FC", dist];
-        break;
-      case 6:
-        closest = ["F2:55:56:32:1E:5A", dist];
-        break;
-      case 7:
-        closest = ["F1:D4:36:55:33:C2", dist];
-        break;
-      case 8:
-        closest = ["DD:59:6C:57:E9:0F", dist];
-        break;
-      case 9:
-        closest = ["D2:9A:07:1A:74:44", dist];
-        break;
-      default:
-        closest = ["nenhum", 100];
-        break;
+    if (smallestIndex >= 0 && smallestIndex < beaconMacToNode.length) {
+      final mac = beaconMacToNode.keys.elementAt(smallestIndex);
+      closest = [mac, dist];
+    } else {
+      closest = ["nenhum", 100];
     }
     return closest;
   }
