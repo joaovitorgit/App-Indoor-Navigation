@@ -1,50 +1,58 @@
 import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:get/get.dart';
 
+/// Controller for managing Bluetooth state and permissions.
 class RequirementStateController extends GetxController {
-  final bluetoothState = BluetoothState.stateOff.obs; 
-  final _startScanning = false.obs; 
-  final _pauseScanning = false.obs; 
+  final Rx<BluetoothState> _bluetoothState = BluetoothState.stateOff.obs;
+  final RxBool _startScanning = false.obs;
+  final RxBool _pauseScanning = false.obs;
+  final Rx<AuthorizationStatus> _authorizationStatus = AuthorizationStatus.notDetermined.obs;
+  final RxBool _locationService = false.obs;
 
-  var authorizationStatus = AuthorizationStatus.notDetermined.obs;
-  var locationService = false.obs;
+  /// Returns true if Bluetooth is enabled.
+  bool get isBluetoothEnabled => _bluetoothState.value == BluetoothState.stateOn;
 
-  bool get authorizationStatusOk =>
-      authorizationStatus.value == AuthorizationStatus.allowed ||
-      authorizationStatus.value == AuthorizationStatus.always;
-  bool get locationServiceEnabled => locationService.value;
+  /// Returns true if location service is enabled.
+  bool get isLocationServiceEnabled => _locationService.value;
 
-  bool get bluetoothEnabled =>
-      bluetoothState.value ==
-      BluetoothState.stateOn;
+  /// Returns true if authorization status is allowed or always.
+  bool get isAuthorizationStatusOk =>
+      _authorizationStatus.value == AuthorizationStatus.allowed ||
+      _authorizationStatus.value == AuthorizationStatus.always;
 
-  atualizaEstadoBluetooth(BluetoothState state) {
-    bluetoothState.value = state;
+  /// Streams for scanning state changes.
+  Stream<bool> get startScanningStream => _startScanning.stream;
+  Stream<bool> get pauseScanningStream => _pauseScanning.stream;
+
+  /// Getters for state (for compatibility with existing code)
+  Rx<BluetoothState> get bluetoothState => _bluetoothState;
+  Rx<AuthorizationStatus> get authorizationStatus => _authorizationStatus;
+  RxBool get locationService => _locationService;
+
+  /// Update Bluetooth state.
+  void updateBluetoothState(BluetoothState state) {
+    _bluetoothState.value = state;
   }
 
-  iniciaEscaneamento() {
+  /// Start scanning for beacons.
+  void startScanning() {
     _startScanning.value = true;
     _pauseScanning.value = false;
   }
 
-  pausaEscaneamento() {
+  /// Pause scanning for beacons.
+  void pauseScanning() {
     _startScanning.value = false;
     _pauseScanning.value = true;
   }
 
-  Stream<bool> get iniciaStream {
-    return _startScanning.stream;
+  /// Update authorization status.
+  void updateAuthorizationStatus(AuthorizationStatus status) {
+    _authorizationStatus.value = status;
   }
 
-  Stream<bool> get pausaStream {
-    return _pauseScanning.stream;
-  }
-
-  updateAuthorizationStatus(AuthorizationStatus status) {
-    authorizationStatus.value = status;
-  }
-
-  updateLocationService(bool flag) {
-    locationService.value = flag;
+  /// Update location service state.
+  void updateLocationService(bool enabled) {
+    _locationService.value = enabled;
   }
 }
